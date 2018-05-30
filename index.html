@@ -33,7 +33,8 @@
                 <br>
                 <!-- box dengan kata random -->
                 <h2>(Kata Yang di Pertanyakan)</h2>
-                <div id='boxKata'></div>
+                <div id='kataRahasia' style='color:white'></div>
+                <div id='hintRahasia' style='font-size: 18pt'></div>
                 <br>
                 <h2>(Huruf-huruf Yang Tidak Ada pada Kata Yang Di Pertanyakan)</h2>
             </div>
@@ -41,32 +42,6 @@
         </div>
     </body>
     
-    <script>
-        // Soal
-        var balonKu = ['hijau','kuning','kelabu', 'merah muda', 'biru'];
-
-
-        function acakKata(min, max){
-            var acak = Math.floor(Math.random() * balonku.length);
-            return acak
-        }
-            
-        var boxKata = document.getElementById('boxKata');
-        var jumlahHuruf = acakKata(2,10); // ganti dengan index dari array kata yang di pertanyakan
-        console.log(jumlahHuruf);
-        for (var i = 0; i < jumlahHuruf; i++){
-            var divHuruf = document.createElement('div');
-            divHuruf.id = 'baris-' + i;
-            divHuruf.className = 'box';
-            boxKata.appendChild(divHuruf);
-        }
-        // document.getElementById("demo")
-            // var kata = [];
-            // var hewanPeliharaan = ['anjing', 'kucing', 'marmut', 'beo'];
-            // var hewanBuas = ['beruang', 'singa', 'harimau'];
-            // var warnaPelangi = ['merah','kuning', 'hijau'];
-            // function testHuruf(){
-            //     var huruf = '';
-            // }
-    </script>
+    <script src=\scripts\master.js></script>
+      
 </html>
