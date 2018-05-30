@@ -44,13 +44,13 @@ function init(){
     }
 
     var boxKata = document.getElementById('boxKata');
-    var jumlahHuruf = jawaban.length; 
-    for (var i = 0; i < jumlahHuruf; i++){
-    var divHuruf = document.createElement('div');
-    divHuruf.id = 'baris-' + i;
-    divHuruf.className = 'box';
+    for (var j = 0; j < jawaban.length; j++){
+        var divHuruf = document.createElement('div');
+            divHuruf.id = 'baris-' + j;
+            divHuruf.className = 'box';
+        boxKata.appendChild(divHuruf);
     }
-    return boxKata.appendChild(divHuruf);
+    
 }
 init()
    
