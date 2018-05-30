@@ -43,14 +43,24 @@ function init(){
         }
     }
 
-    var boxKata = document.getElementById('boxKata');
+    var boxKata = document.getElementById('kataRahasia');
     for (var j = 0; j < jawaban.length; j++){
-        var divHuruf = document.createElement('div');
+        var divHuruf = document.createElement('INPUT');
             divHuruf.id = 'baris-' + j;
             divHuruf.className = 'box';
+            divHuruf.setAttribute('type','text');
+            divHuruf.addEventListener('change', cobaHuruf);
         boxKata.appendChild(divHuruf);
     }
-    
+    document.getElementById('hintRahasia').innerHTML = 'Hint: ' + hint;   
 }
 init()
+
+function cobaHuruf(){
+    if (this.value === ''){
+        document.getElementById('').innerHTML = '';
+    }else (this.value === ''){
+        document.getElementById('').innerHTML = '';
+    }
+}
    
