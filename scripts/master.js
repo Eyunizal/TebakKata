@@ -54,6 +54,10 @@ for (var i = 0; i< bankSoal.length; i++){
     }
 }
 
+if (jumlahSalah === 0){
+    document.getElementById('korban').innerHTML = '<img src="assets/gambar/awal.jpg" alt="Alas Maut">' ;    
+}
+
 // Memunculkan Soal
 function init(){ 
     var boxKata = document.getElementById('kataRahasia');
@@ -63,7 +67,7 @@ function init(){
             kotakHuruf.className = 'box';
         boxKata.appendChild(kotakHuruf);
     }
-    document.getElementById('hintRahasia').innerHTML = 'Hint: ' + hint;
+    document.getElementById('hintRahasia').innerHTML = 'Hint:' + hint;
 }
 init();
 
@@ -76,7 +80,7 @@ function klikTebak(){
     for (var i = 0; i < array.length; i++){
         if (inputHuruf === array[i]){
             var showHuruf = document.getElementById('huruf' + i);
-            showHuruf.innerHTML = array[i];
+                showHuruf.innerHTML = array[i].toUpperCase();
             falseCounter = true;
             jumlahBenar += 1;
         }
@@ -87,7 +91,7 @@ function klikTebak(){
         hurufSalah += inputHuruf;
         jumlahSalah += 1;
         var koleksiSalah = document.getElementById('hurufSalah');
-            koleksiSalah.innerHTML = hurufSalah;
+            koleksiSalah.innerHTML = hurufSalah.toUpperCase();
     }
 
     // Pemberitahuan Kalah
@@ -99,6 +103,26 @@ function klikTebak(){
     if (jumlahBenar === jawaban.length){
         alert('MENANG, ' + hint + ' adalah ' + jawaban);
         alert('Silahkan refresh untuk mengulang permainan');
+    }
+    
+    // Gambar Korban
+    if (jumlahSalah === 1){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/1.jpg" alt="Tiang Maut">';    
+    }
+    if (jumlahSalah === 2){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/2.jpg" alt="Tiang Maut Dengan Gantungan">';
+    }
+    if (jumlahSalah === 3){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/3.jpg" alt="Kepala Menggantung">';
+    }
+    if (jumlahSalah === 4){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/4.jpg" alt="Kepala Badan">';
+    }
+    if (jumlahSalah === 5){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/5.jpg" alt="Tubuh Tanpa Kaki">';
+    }
+    if (jumlahSalah === 6){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/6.jpg" alt="Tiada">';
     }
 }
 
