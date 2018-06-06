@@ -96,13 +96,12 @@ function klikTebak(){
 
     // Pemberitahuan Kalah
     if (jumlahSalah === 6){
-        alert('XXXXXX KALAH XXXXXX');
+        document.getElementById('pesan').innerHTML = '<h2 style="color: red">Kesalahan anda telah memakan korban</h2>';
     }
 
     // Pemberitahuan Menang
     if (jumlahBenar === jawaban.length){
-        alert('MENANG, ' + hint + ' adalah ' + jawaban);
-        alert('Silahkan refresh untuk mengulang permainan');
+        document.getElementById('pesan').innerHTML = 'Selamat anda berhasil, silahkan refresh untuk mengulang';
     }
     
     // Gambar Korban
