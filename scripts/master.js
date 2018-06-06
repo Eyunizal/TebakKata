@@ -17,7 +17,8 @@
 //     boxKata.appendChild(divHuruf);
 // }
 
-
+// ============= List variable ================
+// Variable soal
 var bankSoal = [{
     jawaban: 'hijau',
     hint: 'Meletus Balon'
@@ -31,26 +32,29 @@ var bankSoal = [{
     hint: 'Raja Hutan'
     }
 ];
+// Variable logika
 var inputHuruf = '';
 var hurufSalah = '';
-
+var jumlahSalah = 0;
+var jumlahBenar = 0;
 var acakSoal = Math.floor(Math.random() * bankSoal.length);
 var jawaban = '';
-var hint = '';
-    
-    var array= [];
-    for (var i = 0; i< bankSoal.length; i++){
-        if (acakSoal === i){
-            jawaban = bankSoal[i]['jawaban'];
-            hint = bankSoal[i]['hint'];
-            // console.log(jawaban);
-            for (var j = 0; j < jawaban.length; j++){
-                array.push(jawaban[j]);
-            }
+var hint = '';    
+var array= [];
+
+// =================== Logika ===================
+// Acak Soal
+for (var i = 0; i< bankSoal.length; i++){
+    if (acakSoal === i){
+        jawaban = bankSoal[i]['jawaban'];
+        hint = bankSoal[i]['hint'];
+        for (var j = 0; j < jawaban.length; j++){
+            array.push(jawaban[j]);
         }
     }
+}
 
-
+// Memunculkan Soal
 function init(){ 
     var boxKata = document.getElementById('kataRahasia');
     for (var i = 0; i < jawaban.length; i++){
@@ -63,20 +67,40 @@ function init(){
 }
 init();
 
+// Proses jawab
 function klikTebak(){
     inputHuruf = document.getElementById('huruf').value;
+    var falseCounter = false
+    
+    // Action benar
     for (var i = 0; i < array.length; i++){
         if (inputHuruf === array[i]){
-            var showHuruf = document.getElementById('huruf'+i);
+            var showHuruf = document.getElementById('huruf' + i);
             showHuruf.innerHTML = array[i];
-        }else if (inputHuruf != array[i]){
-            // console.log(hurufSalah);
-            // console.log(inputHuruf);
-            hurufSalah = hurufSalah + inputHuruf;
-            var koleksiSalah = document.getElementById('hurufSalah');
-                koleksiSalah.innerHTML = hurufSalah;
+            falseCounter = true;
+            jumlahBenar += 1;
         }
     }
+    
+    // Action Salah
+    if (falseCounter === false){
+        hurufSalah += inputHuruf;
+        jumlahSalah += 1;
+        var koleksiSalah = document.getElementById('hurufSalah');
+            koleksiSalah.innerHTML = hurufSalah;
+    }
+
+    // Pemberitahuan Kalah
+    if (jumlahSalah === 6){
+        alert('XXXXXX KALAH XXXXXX');
+    }
+
+    // Pemberitahuan Menang
+    if (jumlahBenar === jawaban.length){
+        alert('MENANG, ' + hint + ' adalah ' + jawaban);
+        alert('Silahkan refresh untuk mengulang permainan');
+    }
 }
+
 
 

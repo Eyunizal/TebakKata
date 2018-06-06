@@ -21,7 +21,7 @@
                 
                     <h2>Masukan Satu Huruf</h2>
                     
-                    <input type='text' name='huruf' id='huruf'>
+                    <input type='text' name='huruf' id='huruf' maxlength='1' placeholder='Masukan Satu Huruf'>
                     <!-- <input type='submit' value='Tebak' id='tebak'> -->
                     <button onclick='klikTebak()'>Tebak</button>
                 
@@ -33,16 +33,17 @@
                 
                 <br>
                 <!-- box dengan kata random -->
-                <h2>(Kata Yang di Pertanyakan)</h2>
+                <!-- <h2>(Kata Yang di Pertanyakan)</h2> -->
                 <div id='kataRahasia' style='color: black'></div>
                 <div id='hintRahasia' style='font-size: 18pt'></div>
                 <br>
                 <h2>(Huruf-huruf Yang Tidak Ada pada Kata Yang Di Pertanyakan)</h2>
-                <div id='hurufSalah' style='font-size: 100pt'
+                <div id='hurufSalah' style='font-size: 100pt'>
             </div>
         </div>
         </div>
     </body>
+    
     <script src='scripts/master.js'></script>
     
 </html>
