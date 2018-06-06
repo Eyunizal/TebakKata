@@ -17,50 +17,66 @@
 //     boxKata.appendChild(divHuruf);
 // }
 
-var soal = [{
-    jawaban: 'Hijau',
+
+var bankSoal = [{
+    jawaban: 'hijau',
     hint: 'Meletus Balon'
     },
     {
-    jawaban: 'Kancil',
+    jawaban: 'kancil',
     hint: 'Hewan Nakal'
     },
     {
-    jawaban: 'Singa',
+    jawaban: 'singa',
     hint: 'Raja Hutan'
     }
 ];
+var inputHuruf = '';
+var hurufSalah = '';
 
-
-function init(){
-    var acak = Math.floor(Math.random() * soal.length);
-    var jawaban = '';
-    var hint = '';
-    for (var i = 0; i< soal.length; i++){
-        if (acak === i){
-            jawaban = soal[i]['jawaban'];
-            hint = soal[i]['hint'];
+var acakSoal = Math.floor(Math.random() * bankSoal.length);
+var jawaban = '';
+var hint = '';
+    
+    var array= [];
+    for (var i = 0; i< bankSoal.length; i++){
+        if (acakSoal === i){
+            jawaban = bankSoal[i]['jawaban'];
+            hint = bankSoal[i]['hint'];
+            // console.log(jawaban);
+            for (var j = 0; j < jawaban.length; j++){
+                array.push(jawaban[j]);
+            }
         }
     }
 
-    var boxKata = document.getElementById('kataRahasia');
-    for (var j = 0; j < jawaban.length; j++){
-        var divHuruf = document.createElement('INPUT');
-            divHuruf.id = 'baris-' + j;
-            divHuruf.className = 'box';
-            divHuruf.setAttribute('type','text');
-            divHuruf.addEventListener('change', cobaHuruf);
-        boxKata.appendChild(divHuruf);
-    }
-    document.getElementById('hintRahasia').innerHTML = 'Hint: ' + hint;   
-}
-init()
 
-function cobaHuruf(){
-    if (this.value === ''){
-        document.getElementById('').innerHTML = '';
-    }else (this.value === ''){
-        document.getElementById('').innerHTML = '';
+function init(){ 
+    var boxKata = document.getElementById('kataRahasia');
+    for (var i = 0; i < jawaban.length; i++){
+        var kotakHuruf = document.createElement('div');
+            kotakHuruf.id = 'huruf' + i;
+            kotakHuruf.className = 'box';
+        boxKata.appendChild(kotakHuruf);
+    }
+    document.getElementById('hintRahasia').innerHTML = 'Hint: ' + hint;
+}
+init();
+
+function klikTebak(){
+    inputHuruf = document.getElementById('huruf').value;
+    for (var i = 0; i < array.length; i++){
+        if (inputHuruf === array[i]){
+            var showHuruf = document.getElementById('huruf'+i);
+            showHuruf.innerHTML = array[i];
+        }else if (inputHuruf != array[i]){
+            // console.log(hurufSalah);
+            // console.log(inputHuruf);
+            hurufSalah = hurufSalah + inputHuruf;
+            var koleksiSalah = document.getElementById('hurufSalah');
+                koleksiSalah.innerHTML = hurufSalah;
+        }
     }
 }
-   
+
+
