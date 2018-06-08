@@ -62,6 +62,7 @@ if (jumlahSalah === 0){
     document.getElementById('korban').innerHTML = '<img src="assets/gambar/awal.jpg" alt="Alas Maut">' ;    
 }
 
+
 // Memunculkan Soal
 function init(){ 
     var boxKata = document.getElementById('kataRahasia');
@@ -103,12 +104,14 @@ function klikTebak(){
 
     function kalah(){
         var pesanSalah = document.getElementById('pesan');
-            pesanSalah.innerHTML = '<h2 style="color: red">KALAH</h2>';
+            pesanSalah.innerHTML = '<h1 style="color: red">KALAH</h1>';
     }
 
     function menang(){
         var pesanBenar = document.getElementById('pesan');
             pesanBenar.innerHTML = 'Selamat anda berhasil, silahkan klik tombol Tebak untuk memulai baru';
+        var pesanMenang = document.getElementById('pesanMenang');
+            pesanMenang.innerHTML = 'HORE!!';    
     }
 
     function refreshKalah(){
@@ -130,7 +133,7 @@ function klikTebak(){
     
     // Gambar Korban
     if (jumlahSalah === 1){
-        document.getElementById('korban').innerHTML = '<img src="assets/gambar/1.jpg" alt="Tiang Maut">';    
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/1.jpg" alt="Tiang Maut" class="boxauto">';    
     }
     if (jumlahSalah === 2){
         document.getElementById('korban').innerHTML = '<img src="assets/gambar/2.jpg" alt="Tiang Maut Dengan Gantungan">';
@@ -150,6 +153,10 @@ function klikTebak(){
 
     if (jumlahSalah === 7){
         refreshKalah();
+    }
+    
+    if (jumlahBenar === jawaban.length){
+        document.getElementById('korban').innerHTML = '<img src="assets/gambar/menang.png" alt="Menang">' ;    
     }
 
     
