@@ -7,30 +7,33 @@
 // function testHuruf(){
 //     var huruf = '';
 // }
-        
-// var boxKata = document.getElementById('boxKata');
-// var jumlahHuruf = 5; // ganti dengan index dari array kata yang di pertanyakan
-// for (var i = 0; i < jumlahHuruf; i++){
-//     var divHuruf = document.createElement('div');
-//     divHuruf.id = 'baris-' + i;
-//     divHuruf.className = 'box';
-//     boxKata.appendChild(divHuruf);
-// }
 
 // ============= List variable ================
 // Variable soal
 var bankSoal = [{
-    jawaban: 'hijau',
-    hint: 'Meletus Balon'
-    },
-    {
-    jawaban: 'kancil',
-    hint: 'Hewan Nakal'
-    },
-    {
-    jawaban: 'singa',
-    hint: 'Raja Hutan'
-    }
+        jawaban: 'hijau',
+        hint: 'Meletus Balon'
+        },
+        {
+        jawaban: 'kancil',
+        hint: 'Hewan Nakal'
+        },
+        {
+        jawaban: 'singa',
+        hint: 'Raja Hutan'
+        },
+        {
+        jawaban: 'merah',
+        hint: 'Warna Api'
+        },
+        {
+        jawaban: 'tom',
+        hint: 'Temanya Jerry'
+        },
+        {
+        jawaban: 'ayam',
+        hint: 'KFC'
+        },
 ];
 // Variable logika
 var inputHuruf = '';
@@ -41,6 +44,7 @@ var acakSoal = Math.floor(Math.random() * bankSoal.length);
 var jawaban = '';
 var hint = '';    
 var array= [];
+var arrayBenar = [];
 
 // =================== Logika ===================
 // Acak Soal
@@ -76,16 +80,19 @@ function klikTebak(){
     inputHuruf = document.getElementById('huruf').value;
     var falseCounter = false
     
+    
     // Action benar
     for (var i = 0; i < array.length; i++){
-        if (inputHuruf === array[i]){
-            var showHuruf = document.getElementById('huruf' + i);
-                showHuruf.innerHTML = array[i].toUpperCase();
-            falseCounter = true;
-            jumlahBenar += 1;
-        }
+        
+            if (inputHuruf === array[i]){
+                var showHuruf = document.getElementById('huruf' + i);
+                    showHuruf.innerHTML = array[i].toUpperCase();
+                falseCounter = true;
+                jumlahBenar += 1;
+                arrayBenar.push(array[i]);
+            }
     }
-    
+
     // Action Salah
     if (falseCounter === false){
         hurufSalah += inputHuruf;
@@ -94,16 +101,31 @@ function klikTebak(){
             koleksiSalah.innerHTML = hurufSalah.toUpperCase();
     }
 
+    function kalah(){
+        var pesanSalah = document.getElementById('pesan');
+            pesanSalah.innerHTML = '<h2 style="color: red">KALAH</h2>';
+    }
+
+    function menang(){
+        var pesanBenar = document.getElementById('pesan');
+            pesanBenar.innerHTML = 'Selamat anda berhasil, silahkan klik tombol Tebak untuk memulai baru';
+    }
+
+    function refreshKalah(){
+        location.reload();
+    }
+
     // Pemberitahuan Kalah
     if (jumlahSalah === 6){
-        var pesanSalah = document.getElementById('pesan');
-            pesanSalah.innerHTML = '<h2 style="color: red">Kesalahan anda telah memakan korban</h2>';
+        kalah();
     }
 
     // Pemberitahuan Menang
     if (jumlahBenar === jawaban.length){
-        var pesanBenar = document.getElementById('pesan');
-            pesanBenar.innerHTML = 'Selamat anda berhasil, silahkan refresh untuk mengulang';
+        menang();
+    }
+    if (jumlahBenar === jawaban.length + 1){
+        refreshKalah();
     }
     
     // Gambar Korban
@@ -125,7 +147,11 @@ function klikTebak(){
     if (jumlahSalah === 6){
         document.getElementById('korban').innerHTML = '<img src="assets/gambar/6.jpg" alt="Tiada">';
     }
+
+    if (jumlahSalah === 7){
+        refreshKalah();
+    }
+
+    
 }
-
-
 
